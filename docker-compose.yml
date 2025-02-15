@@ -1,0 +1,14 @@
+services:
+  reading-services:
+    container_name: what-ya-wanna-read
+    image: what-ya-wanna-read
+    volumes:
+      - ./app:/code/app
+      - ./run_app.py:/code/run_app.py
+    ports:
+      - 3000:3000
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
